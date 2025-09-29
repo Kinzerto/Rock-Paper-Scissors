@@ -1,6 +1,7 @@
 let humanScore = 0;
 let computerScore = 0;
-let draw = 0;
+
+startGame()
 
 function getComputerChoice(){
     randomNum = Math.trunc(Math.random() * 3 ) + 1; //Math.trunc() to not make math.random() have decimal
@@ -22,7 +23,6 @@ function getHumanChoice(){
 function playRound(humanChoice, computerChoice){
     let result = '';
     if(humanChoice === computerChoice){
-        draw++
         result = 'ITS A DRAW';
     //PLAYER WIN
     }else if(humanChoice === 'rock' && computerChoice === 'scissors'){
@@ -48,13 +48,23 @@ function playRound(humanChoice, computerChoice){
         computerScore++
         result = 'You Lose';
     }
-    alert(`Player Choice: ${humanChoice}\nComputer Choice: ${computerChoice}\n\nResult: ${result}\nScore: Player: ${humanScore} Computer: ${computerScore} Draw: ${draw}`);
+    alert(`Player Choice: ${humanChoice}\nComputer Choice: ${computerChoice}\n\nResult: ${result}\nScore: Player: ${humanScore} Computer: ${computerScore}`);
 }
-//to play 5 times 
-for(let i = 0; i < 5; i++){
-    const computerChoice = getComputerChoice();
-    const humanChoice = getHumanChoice();
-    playRound(humanChoice, computerChoice)  
+function startGame(){
+    for(let i = 0; i < 5; i++){
+        const computerChoice = getComputerChoice();
+        const humanChoice = getHumanChoice();
+        playRound(humanChoice, computerChoice);
+    }
+
+    let finalResult = '';
+    if(humanScore === computerScore){
+        finalResult = 'Its a draw';
+    }else if(humanScore > computerScore){
+        finalResult ='You Win';
+    }else{
+        finalResult ='You Lose';
+    }
+    alert(`Final Result: ${finalResult}\nScore: Player: ${humanScore} Computer: ${computerScore}`)
 
 }
-
