@@ -15,7 +15,7 @@ function getComputerChoice(){
 
 function getHumanChoice(){
     //.toLowerCase() so that even player inputs uppercase string it will converted to lowercase
-    const choice = prompt('Pck: Rock, Paper, Scissors :').toLowerCase();
+    const choice = prompt('Pick: Rock, Paper, Scissors :').toLowerCase();
     return choice
 }
 
