@@ -1,7 +1,6 @@
 let humanScore = 0;
 let computerScore = 0;
 
-
 function getComputerChoice(){
     randomNum = Math.trunc(Math.random() * 3 ) + 1; //Math.trunc() to not make math.random() have decimal
     if (randomNum === 1){ 
@@ -12,17 +11,13 @@ function getComputerChoice(){
         return 'scissors' 
     }
 }
-
 function playRound(humanChoice, computerChoice){
+
+    //image DOM
     document.querySelector('.resultPicture #human').src = `images/${humanChoice}.png`;
     document.querySelector('.resultPicture #computer').src = `images/${computerChoice}.png`;
     
-      
-    let result = '';
-    if(humanChoice === computerChoice){
-        result = 'ITS A DRAW';
-    //PLAYER WIN
-    }else if(humanChoice === 'rock' && computerChoice === 'scissors'){
+    if(humanChoice === 'rock' && computerChoice === 'scissors'){
         humanScore++
         result = 'You Win';
     }
@@ -36,20 +31,19 @@ function playRound(humanChoice, computerChoice){
     //PLAYER LOSE
     else if(humanChoice === 'scissors' && computerChoice === 'rock'){
         computerScore++
-        result = 'You Lose';
     }
     else if(humanChoice === 'rock' && computerChoice === 'paper'){
         computerScore++
-        result = 'You Lose';
     }else if(humanChoice === 'paper' && computerChoice === 'scissors'){
         computerScore++
-        result = 'You Lose';
     }
     score()
 }
 const h1 = document.createElement('h1')
+
 function score(){
     const result = document.querySelector('.result');
+
     result.append(h1)
     if(humanScore >= 5){
         h1.textContent = `YOU WIN`;
@@ -60,8 +54,7 @@ function score(){
         humanScore = 0
         computerScore = 0
     }else{
-    
-    h1.textContent = `RESULT: Player: ${humanScore} Computer: ${computerScore}`;
+        h1.textContent = `RESULT: Player: ${humanScore} Computer: ${computerScore}`;
     }
 
     
