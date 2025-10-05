@@ -49,10 +49,14 @@ function score(){
         h1.textContent = `YOU WIN`;
         humanScore = 0
         computerScore = 0
+        document.querySelector('.resultPicture #human').src = `images/pick.png`;
+        document.querySelector('.resultPicture #computer').src = `images/pick.png`;
     }else if(computerScore >= 5){
         h1.textContent = `YOU LOSE`
         humanScore = 0
         computerScore = 0
+        document.querySelector('.resultPicture #human').src = `images/pick.png`;
+        document.querySelector('.resultPicture #computer').src = `images/pick.png`;
     }else{
         h1.textContent = `RESULT: Player: ${humanScore} Computer: ${computerScore}`;
     }
