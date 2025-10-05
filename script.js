@@ -1,7 +1,6 @@
 let humanScore = 0;
 let computerScore = 0;
 
-startGame()
 
 function getComputerChoice(){
     randomNum = Math.trunc(Math.random() * 3 ) + 1; //Math.trunc() to not make math.random() have decimal
@@ -14,13 +13,11 @@ function getComputerChoice(){
     }
 }
 
-function getHumanChoice(){
-    //.toLowerCase() so that even player inputs uppercase string it will converted to lowercase
-    const choice = prompt('Pick: Rock, Paper, Scissors :').toLowerCase();
-    return choice
-}
-
 function playRound(humanChoice, computerChoice){
+    document.querySelector('.resultPicture #human').src = `images/${humanChoice}.png`;
+    document.querySelector('.resultPicture #computer').src = `images/${computerChoice}.png`;
+    
+      
     let result = '';
     if(humanChoice === computerChoice){
         result = 'ITS A DRAW';
@@ -48,23 +45,35 @@ function playRound(humanChoice, computerChoice){
         computerScore++
         result = 'You Lose';
     }
-    alert(`Player Choice: ${humanChoice}\nComputer Choice: ${computerChoice}\n\nResult: ${result}\nScore: Player: ${humanScore} Computer: ${computerScore}`);
+    score()
 }
-function startGame(){
-    for(let i = 0; i < 5; i++){
-        const computerChoice = getComputerChoice();
-        const humanChoice = getHumanChoice();
-        playRound(humanChoice, computerChoice);
-    }
-
-    let finalResult = '';
-    if(humanScore === computerScore){
-        finalResult = 'Its a draw';
-    }else if(humanScore > computerScore){
-        finalResult ='You Win';
+const h1 = document.createElement('h1')
+function score(){
+    const result = document.querySelector('.result');
+    result.append(h1)
+    if(humanScore >= 5){
+        h1.textContent = `YOU WIN`;
+        humanScore = 0
+        computerScore = 0
+    }else if(computerScore >= 5){
+        h1.textContent = `YOU LOSE`
+        humanScore = 0
+        computerScore = 0
     }else{
-        finalResult ='You Lose';
+    
+    h1.textContent = `RESULT: Player: ${humanScore} Computer: ${computerScore}`;
     }
-    alert(`Final Result: ${finalResult}\nScore: Player: ${humanScore} Computer: ${computerScore}`)
 
+    
 }
+let humanPick = '' //clicked button
+const choice = document.querySelector('.playerChoice')
+choice.addEventListener('click', (e) => {
+    const button = e.target.closest('img')
+    if (button) {
+        const choice = e.target.id
+        humanPick = choice;
+        const computerChoice = getComputerChoice();
+        playRound(choice, computerChoice) ;
+    }
+})
