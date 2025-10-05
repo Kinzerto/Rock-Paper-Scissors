@@ -1,0 +1,36 @@
+*{
+    padding: 0;
+    margin: 0;
+    font-family: 'Courier New', Courier, monospace;
+}
+ .playerChoice img {
+  width: 50px;
+  height: 50px;
+  display: block;   
+    cursor: pointer;
+}
+body{
+    height: 100vh;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.playerChoice{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+}
+.resultPicture{
+    display: flex;
+    margin-bottom: 50px;
+    gap: 100px;
+}
+.resultPicture img{
+    height: 300px;
+    width: 300px;
+}
